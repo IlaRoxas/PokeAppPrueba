@@ -1,0 +1,21 @@
+:host {
+	--slds-c-card-color-background:  #6390be;
+}
+.slds-media__body {
+    margin-bottom: 21px;
+    background-color: #f0baba;
+	border-radius: 25px;
+	padding: 14px !important;
+	width: 280px;
+	padding-bottom: 20px!important;
+    padding-top: 1px!important;
+	margin-left: 10px;
+    margin-right: 10px;
+}
+.slds-media__figure {
+	margin: 0 auto 20px auto!important;
+}
+.poke-button{
+   
+    border-radius: 19px;
+}

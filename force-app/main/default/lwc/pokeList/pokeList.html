@@ -1,0 +1,55 @@
+<template>
+	<lightning-card title="Pokemones" >
+		<div class="slds-card__body slds-card__body_inner">
+			<template if:true={pokemons}>	
+				<td scope="col">
+					<lightning-input 
+						type="search"
+						onchange={handleSearchTermChange}
+						class="slds-var-m-bottom_small"
+						label="Buscar"
+						placeholder="Buscar un Pokémon"
+						value={nombre}>
+					</lightning-input>
+				</td>
+				<td scope="col">
+					<lightning-combobox
+                    	name="Generación"
+                    	label="Generación"
+                    	value={value}
+                    	placeholder="Filtrar por Generación"
+                		options={generacionOptions}
+                    	onchange={handleGeneracionChange}
+						class="slds-var-m-left_large"
+                	></lightning-combobox>
+				</td>
+				<td scope="col">
+					<lightning-combobox
+                    	name="Tipos"
+                    	label="Tipos (Máximo 2)"
+                    	value={value}
+                   	 	placeholder="Filtrar por Tipos"
+                		options={tiposOptions}
+                    	onchange={handleTiposChange}
+						class="slds-var-m-left_large"
+                	></lightning-combobox>
+				</td>
+					<template for:each={allTiposValues} for:item="val">
+						<lightning-pill key={val} label={val} name={val} onremove={handleTiposRemove}></lightning-pill>
+					</template>
+				<lightning-layout>
+					<p class="slds-var-m-vertical_small"><b>Cantidad de Pokemones: </b>{numberOfPoks}</p> 
+				</lightning-layout>
+				<lightning-layout multiple-rows="true" pull-to-boundary="small">
+					<template for:each={pokemons} for:item="pokemon">
+						<lightning-layout-item key={pokemon.Id} size="3" class="slds-var-p-around_x-small">
+							<c-poke-card pokemon={pokemon} onpokemonview={handlePokemonView}></c-poke-card>
+						</lightning-layout-item>
+					</template>
+				</lightning-layout>
+				<template if:false={hasResults}>
+				</template>
+			</template>
+		</div>
+	</lightning-card>
+</template>
